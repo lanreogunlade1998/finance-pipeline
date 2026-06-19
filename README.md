@@ -30,45 +30,10 @@ A stock trading platform needs to:
 ## 🏗️ Architecture
 
 ### Medallion Layer Architecture
-┌─────────────────────────────────────────────────────────────────────┐
-│ BRONZE LAYER (Raw Data) │
-│ │
-│ 📄 CSV + JSON → 📂 Landing → 🔄 Processed (Parquet) │
-│ │
-│ Source of Truth - Raw data preserved for audit and reprocessing │
-└─────────────────────────┬───────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ SILVER LAYER (Cleaned Data) │
-│ │
-│ 🧹 Deduplication → 📊 Dimensional Modeling → 🔗 Star Schema │
-│ │
-│ Clean, structured data ready for analytics │
-│ ┌──────────────────────┐ ┌──────────────────────┐ │
-│ │ dim_users │ │ dim_securities │ │
-│ └──────────────────────┘ └──────────────────────┘ │
-│ ┌──────────────────────┐ ┌──────────────────────┐ │
-│ │ fact_trades │ │ fact_sessions │ │
-│ └──────────────────────┘ └──────────────────────┘ │
-└─────────────────────────┬───────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ GOLD LAYER (Business Insights) │
-│ │
-│ 📊 Aggregations → 💰 KPIs → 📈 Ready for Dashboards │
-│ │
-│ Business-ready data for decision making │
-│ ┌──────────────────────────────────────────────────────────┐ │
-│ │ Portfolio Performance │ Trading Volume Summary │ │
-│ │ User Activity Summary │ Stock Performance by Exchange│ │
-│ └──────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────────┘
 
-text
+<img width="2720" height="3040" alt="finance_pipeline_detailed_architecture" src="https://github.com/user-attachments/assets/8c46a88c-1382-47d7-a93f-ac206c7d00bb" />
 
----
+
 
 ## 🛠️ Technologies Used
 
@@ -84,27 +49,8 @@ text
 ---
 
 ## 📂 Repository Structure
-finance-pipeline/
-│
-├── notebooks/
-│ ├── 01_Bronze_Ingestion.py # Raw data ingestion
-│ ├── 02_Silver_Transformations.py # Data cleaning & modeling
-│ └── 03_Gold_Aggregations.py # Business intelligence
-│
-├── data/
-│ ├── registered_users_1.csv # User registration data
-│ ├── user_info_1.json # User profiles (CDC)
-│ ├── trades_1.json # Trade transactions
-│ └── trading_sessions_1.csv # Session data
-│
-├── diagrams/
-│ └── pipeline_architecture.png # Architecture diagram
-│
-└── README.md # Project documentation
+<img width="2830" height="1680" alt="finance_pipeline_repo_structure" src="https://github.com/user-attachments/assets/68e960af-e295-4add-afa3-26ee0948f4e0" />
 
-text
-
----
 
 ## 📊 Data Model
 
